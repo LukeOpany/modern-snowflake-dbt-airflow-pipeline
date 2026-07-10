@@ -1,0 +1,9 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "dbt.dbtIntegration": "core",
+  "dbt.dbtPythonPathOverride": "${workspaceFolder}/.venv/bin/python",
+  "files.associations": {
+    "dbt_project.yml": "yaml",
+    "*.yml": "yaml"
+  }
+}
