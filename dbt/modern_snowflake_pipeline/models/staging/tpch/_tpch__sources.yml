@@ -6,6 +6,7 @@ sources:
     schema: TPCH_SF1
     tables:
       - name: orders
+      - name: customer
 
 models:
   - name: stg_tpch__orders
@@ -16,5 +17,15 @@ models:
           - not_null
 
       - name: customer_id
+        data_tests:
+          - not_null
+  - name: stg_tpch__customers
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_name
         data_tests:
           - not_null
