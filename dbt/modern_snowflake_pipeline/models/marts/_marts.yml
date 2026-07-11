@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: Orders enriched with customer information.
+
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_tpch__customers')
+                field: customer_id
