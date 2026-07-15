@@ -18,6 +18,7 @@ dbt_packages/
 **/dbt_packages/
 
 # Airflow-generated artifacts
+airflow/.airflow_home/
 airflow/airflow.db
 airflow/*.pid
 
