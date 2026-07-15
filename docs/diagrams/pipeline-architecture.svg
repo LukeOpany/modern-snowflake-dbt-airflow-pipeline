@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900"><rect width="100%" height="100%" fill="#0b1220"/><rect x="0" y="0" width="1200" height="900" rx="15" fill="#0b1220" stroke="#0b1220" stroke-width="0"/>
+<text x="64" y="84" fill="#f8fafc" font-family="Arial, sans-serif" font-size="36" font-weight="700" text-anchor="start">Modern Analytics Engineering Pipeline</text>
+<text x="66" y="116" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18" font-weight="500" text-anchor="start">Airflow orchestrates dbt transformations and quality checks inside Snowflake.</text>
+<rect x="58" y="158" width="1084" height="250" rx="15" fill="#111c30" stroke="#334155" stroke-width="2"/>
+<text x="84" y="202" fill="#67e8f9" font-family="Arial, sans-serif" font-size="20" font-weight="500" text-anchor="start">ORCHESTRATION PLANE</text>
+<ellipse cx="187" cy="302" rx="95" ry="42" fill="#164e63" stroke="#22d3ee" stroke-width="2"/>
+<text x="187" y="310.25" fill="#ecfeff" font-family="Arial, sans-serif" font-size="22" font-weight="500" text-anchor="middle">Airflow DAG</text>
+<rect x="352" y="260" width="190" height="84" rx="15" fill="#1e3a5f" stroke="#60a5fa" stroke-width="2"/>
+<text x="447" y="297.5" fill="#eff6ff" font-family="Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle">1. dbt debug</text><text x="447" y="320" fill="#eff6ff" font-family="Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle">Validate connection</text>
+<rect x="616" y="260" width="190" height="84" rx="15" fill="#5c3d1a" stroke="#fb923c" stroke-width="2"/>
+<text x="711" y="297.5" fill="#fff7ed" font-family="Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle">2. dbt run</text><text x="711" y="320" fill="#fff7ed" font-family="Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle">Build models</text>
+<rect x="880" y="260" width="190" height="84" rx="15" fill="#1a4d2e" stroke="#4ade80" stroke-width="2"/>
+<text x="975" y="297.5" fill="#f0fdf4" font-family="Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle">3. dbt test</text><text x="975" y="320" fill="#f0fdf4" font-family="Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle">Enforce quality</text>
+<polyline points="282,302 352,302" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polygon points="352,302 342.47372055837116,307.5 342.47372055837116,296.5" fill="#cbd5e1"/>
+<polyline points="542,302 616,302" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polygon points="616,302 606.4737205583712,307.5 606.4737205583712,296.5" fill="#cbd5e1"/>
+<polyline points="806,302 880,302" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polygon points="880,302 870.4737205583712,307.5 870.4737205583712,296.5" fill="#cbd5e1"/>
+<rect x="58" y="444" width="1084" height="304" rx="15" fill="#101b2d" stroke="#334155" stroke-width="2"/>
+<text x="84" y="488" fill="#7dd3fc" font-family="Arial, sans-serif" font-size="20" font-weight="500" text-anchor="start">SNOWFLAKE DATA PLANE</text>
+<rect x="92" y="552" width="230" height="108" rx="15" fill="#1e3a5f" stroke="#38bdf8" stroke-width="2"/>
+<text x="207" y="601" fill="#f0f9ff" font-family="Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle">TPC-H SF1 sources</text><text x="207" y="626" fill="#f0f9ff" font-family="Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle">ORDERS  |  CUSTOMER</text>
+<rect x="416" y="532" width="260" height="148" rx="15" fill="#2d1b69" stroke="#a78bfa" stroke-width="2"/>
+<text x="546" y="589.375" fill="#f5f3ff" font-family="Arial, sans-serif" font-size="19" font-weight="500" text-anchor="middle">dbt staging views</text><text x="546" y="613.125" fill="#f5f3ff" font-family="Arial, sans-serif" font-size="19" font-weight="500" text-anchor="middle">stg_tpch__orders</text><text x="546" y="636.875" fill="#f5f3ff" font-family="Arial, sans-serif" font-size="19" font-weight="500" text-anchor="middle">stg_tpch__customers</text>
+<rect x="792" y="552" width="260" height="108" rx="15" fill="#1a4d2e" stroke="#4ade80" stroke-width="2"/>
+<text x="922" y="601" fill="#f0fdf4" font-family="Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle">fct_orders</text><text x="922" y="626" fill="#f0fdf4" font-family="Arial, sans-serif" font-size="20" font-weight="500" text-anchor="middle">Enriched analytics mart</text>
+<polyline points="322,606 416,606" fill="none" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polygon points="416,606 406.47372055837116,611.5 406.47372055837116,600.5" fill="#7dd3fc"/>
+<text x="369" y="642" fill="#bae6fd" font-family="Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle">source()</text>
+<polyline points="676,606 792,606" fill="none" stroke="#c4b5fd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polygon points="792,606 782.4737205583712,611.5 782.4737205583712,600.5" fill="#c4b5fd"/>
+<text x="734" y="642" fill="#ddd6fe" font-family="Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle">ref() + join</text>
+<polyline points="711,344 701,418 547,532" fill="none" stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 8"/><polygon points="547,532 551.3842931041204,521.9114929758084 557.9290499212678,530.7526556937094" fill="#fb923c"/>
+<polyline points="975,344 975,438 922,552" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 8"/><polygon points="922,552 921.02872102991,541.0429649465624 931.0034312213886,545.6803302110217" fill="#4ade80"/>
+<rect x="90" y="790" width="238" height="62" rx="15" fill="#1f2937" stroke="#64748b" stroke-width="2"/>
+<text x="209" y="827.75" fill="#f8fafc" font-family="Arial, sans-serif" font-size="18" font-weight="500" text-anchor="middle">GitHub version control</text>
+<text x="390" y="824" fill="#86efac" font-family="Arial, sans-serif" font-size="22" font-weight="500" text-anchor="start">1.5M mart rows   |   3 models   |   10/10 tests passing</text></svg>

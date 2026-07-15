@@ -1,0 +1,1614 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "excalidraw-cli",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "combined_bg",
+      "x": 0,
+      "y": 0,
+      "width": 1600,
+      "height": 1200,
+      "backgroundColor": "#070d19",
+      "fillStyle": "solid",
+      "strokeColor": "#070d19",
+      "strokeWidth": 0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "combined_title",
+      "x": 54,
+      "y": 44,
+      "text": "Snowflake + dbt + Airflow: System Overview",
+      "fontSize": 38,
+      "fontFamily": 2,
+      "strokeColor": "#f8fafc"
+    },
+    {
+      "type": "text",
+      "id": "combined_subtitle",
+      "x": 56,
+      "y": 98,
+      "text": "Architecture, model lineage, and verified delivery evidence on one editable canvas.",
+      "fontSize": 19,
+      "fontFamily": 2,
+      "strokeColor": "#94a3b8"
+    },
+    {
+      "type": "rectangle",
+      "id": "a_arch_bg",
+      "x": 36,
+      "y": 154,
+      "width": 744,
+      "height": 558,
+      "backgroundColor": "#0b1220",
+      "fillStyle": "solid",
+      "strokeColor": "#0b1220",
+      "strokeWidth": 0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_arch_title",
+      "x": 75.68,
+      "y": 183.76,
+      "text": "Modern Analytics Engineering Pipeline",
+      "fontSize": 22.32,
+      "fontFamily": 2,
+      "strokeColor": "#f8fafc",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "text",
+      "id": "a_arch_subtitle",
+      "x": 76.92,
+      "y": 214.76,
+      "text": "Airflow orchestrates dbt transformations and quality checks inside Snowflake.",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "strokeColor": "#94a3b8",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "rectangle",
+      "id": "a_control_zone",
+      "x": 71.96000000000001,
+      "y": 251.95999999999998,
+      "width": 672.08,
+      "height": 155,
+      "backgroundColor": "#111c30",
+      "fillStyle": "solid",
+      "strokeColor": "#334155",
+      "strokeWidth": 1.24,
+      "roughness": 1,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_control_title",
+      "x": 88.08,
+      "y": 266.84000000000003,
+      "text": "ORCHESTRATION PLANE",
+      "fontSize": 12.4,
+      "fontFamily": 2,
+      "strokeColor": "#67e8f9",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "ellipse",
+      "id": "a_airflow",
+      "x": 93.03999999999999,
+      "y": 315.2,
+      "width": 117.8,
+      "height": 52.08,
+      "backgroundColor": "#164e63",
+      "fillStyle": "solid",
+      "strokeColor": "#22d3ee",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "a_airflow_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_airflow_label",
+      "x": 99.24000000000001,
+      "y": 321.4,
+      "width": 105.4,
+      "height": 39.68,
+      "text": "Airflow DAG",
+      "fontSize": 13.64,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_airflow",
+      "strokeColor": "#ecfeff"
+    },
+    {
+      "type": "rectangle",
+      "id": "a_debug",
+      "x": 254.24,
+      "y": 315.2,
+      "width": 117.8,
+      "height": 52.08,
+      "backgroundColor": "#1e3a5f",
+      "fillStyle": "solid",
+      "strokeColor": "#60a5fa",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "a_debug_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_debug_label",
+      "x": 260.44,
+      "y": 321.4,
+      "width": 105.4,
+      "height": 39.68,
+      "text": "1. dbt debug\nValidate connection",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_debug",
+      "strokeColor": "#eff6ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "a_run",
+      "x": 417.92,
+      "y": 315.2,
+      "width": 117.8,
+      "height": 52.08,
+      "backgroundColor": "#5c3d1a",
+      "fillStyle": "solid",
+      "strokeColor": "#fb923c",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "a_run_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_run_label",
+      "x": 424.12,
+      "y": 321.4,
+      "width": 105.4,
+      "height": 39.68,
+      "text": "2. dbt run\nBuild models",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_run",
+      "strokeColor": "#fff7ed"
+    },
+    {
+      "type": "rectangle",
+      "id": "a_test",
+      "x": 581.6,
+      "y": 315.2,
+      "width": 117.8,
+      "height": 52.08,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "a_test_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_test_label",
+      "x": 587.8,
+      "y": 321.4,
+      "width": 105.4,
+      "height": 39.68,
+      "text": "3. dbt test\nEnforce quality",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_test",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "arrow",
+      "id": "a_ctrl_a1",
+      "x": 210.84,
+      "y": 341.24,
+      "width": 43.4,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          43.4,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#cbd5e1",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "a_airflow",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "a_debug",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      }
+    },
+    {
+      "type": "arrow",
+      "id": "a_ctrl_a2",
+      "x": 372.04,
+      "y": 341.24,
+      "width": 45.88,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          45.88,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#cbd5e1",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "a_debug",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "a_run",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      }
+    },
+    {
+      "type": "arrow",
+      "id": "a_ctrl_a3",
+      "x": 535.72,
+      "y": 341.24,
+      "width": 45.88,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          45.88,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#cbd5e1",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "a_run",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "a_test",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "a_data_zone",
+      "x": 71.96000000000001,
+      "y": 429.28,
+      "width": 672.08,
+      "height": 188.48,
+      "backgroundColor": "#101b2d",
+      "fillStyle": "solid",
+      "strokeColor": "#334155",
+      "strokeWidth": 1.24,
+      "roughness": 1,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_data_title",
+      "x": 88.08,
+      "y": 444.16,
+      "text": "SNOWFLAKE DATA PLANE",
+      "fontSize": 12.4,
+      "fontFamily": 2,
+      "strokeColor": "#7dd3fc",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "rectangle",
+      "id": "a_tpch",
+      "x": 93.03999999999999,
+      "y": 496.24,
+      "width": 142.6,
+      "height": 66.96,
+      "backgroundColor": "#1e3a5f",
+      "fillStyle": "solid",
+      "strokeColor": "#38bdf8",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "a_tpch_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_tpch_label",
+      "x": 99.24000000000001,
+      "y": 502.44,
+      "width": 130.2,
+      "height": 54.56,
+      "text": "TPC-H SF1 sources\nORDERS  |  CUSTOMER",
+      "fontSize": 12.4,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_tpch",
+      "strokeColor": "#f0f9ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "a_staging",
+      "x": 293.92,
+      "y": 483.84,
+      "width": 161.2,
+      "height": 91.76,
+      "backgroundColor": "#2d1b69",
+      "fillStyle": "solid",
+      "strokeColor": "#a78bfa",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "a_staging_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_staging_label",
+      "x": 300.12,
+      "y": 490.04,
+      "width": 148.8,
+      "height": 79.36,
+      "text": "dbt staging views\nstg_tpch__orders\nstg_tpch__customers",
+      "fontSize": 11.78,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_staging",
+      "strokeColor": "#f5f3ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "a_mart",
+      "x": 527.04,
+      "y": 496.24,
+      "width": 161.2,
+      "height": 66.96,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "a_mart_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_mart_label",
+      "x": 533.24,
+      "y": 502.44,
+      "width": 148.8,
+      "height": 54.56,
+      "text": "fct_orders\nEnriched analytics mart",
+      "fontSize": 12.4,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_mart",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "arrow",
+      "id": "a_data_a1",
+      "x": 235.64,
+      "y": 529.72,
+      "width": 58.28,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          58.28,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#7dd3fc",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "a_tpch",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "a_staging",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "a_data_a1_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "a_data_a1_label",
+      "x": 241.84,
+      "y": 535.9200000000001,
+      "width": 45.88,
+      "height": 24.8,
+      "text": "source()",
+      "fontSize": 9.92,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_data_a1",
+      "strokeColor": "#bae6fd"
+    },
+    {
+      "type": "arrow",
+      "id": "a_data_a2",
+      "x": 455.12,
+      "y": 529.72,
+      "width": 71.92,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          71.92,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#c4b5fd",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "a_staging",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "a_mart",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "a_data_a2_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "a_data_a2_label",
+      "x": 461.32,
+      "y": 535.9200000000001,
+      "width": 59.519999999999996,
+      "height": 24.8,
+      "text": "ref() + join",
+      "fontSize": 9.92,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_data_a2",
+      "strokeColor": "#ddd6fe"
+    },
+    {
+      "type": "arrow",
+      "id": "a_run_to_data",
+      "x": 476.82,
+      "y": 367.28,
+      "width": -101.67999999999999,
+      "height": 116.56,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -6.2,
+          45.88
+        ],
+        [
+          -101.67999999999999,
+          116.56
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#fb923c",
+      "strokeWidth": 1.24,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "a_run",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "a_staging",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "arrow",
+      "id": "a_test_to_data",
+      "x": 640.5,
+      "y": 367.28,
+      "width": -32.86,
+      "height": 128.96,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          58.28
+        ],
+        [
+          -32.86,
+          128.96
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#4ade80",
+      "strokeWidth": 1.24,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "a_test",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "a_mart",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "a_github",
+      "x": 91.8,
+      "y": 643.8,
+      "width": 147.56,
+      "height": 38.44,
+      "backgroundColor": "#1f2937",
+      "fillStyle": "solid",
+      "strokeColor": "#64748b",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "a_github_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "a_github_label",
+      "x": 98,
+      "y": 650,
+      "width": 135.16,
+      "height": 26.04,
+      "text": "GitHub version control",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "a_github",
+      "strokeColor": "#f8fafc"
+    },
+    {
+      "type": "text",
+      "id": "a_metrics",
+      "x": 277.8,
+      "y": 651.24,
+      "text": "1.5M mart rows   |   3 models   |   10/10 tests passing",
+      "fontSize": 13.64,
+      "fontFamily": 2,
+      "strokeColor": "#86efac",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "rectangle",
+      "id": "l_lin_bg",
+      "x": 820,
+      "y": 154,
+      "width": 744,
+      "height": 558,
+      "backgroundColor": "#0b1220",
+      "fillStyle": "solid",
+      "strokeColor": "#0b1220",
+      "strokeWidth": 0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_lin_title",
+      "x": 859.68,
+      "y": 182.52,
+      "text": "dbt Model Lineage and Quality Contracts",
+      "fontSize": 22.32,
+      "fontFamily": 2,
+      "strokeColor": "#f8fafc",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "text",
+      "id": "l_lin_subtitle",
+      "x": 860.92,
+      "y": 213.51999999999998,
+      "text": "Two Snowflake sources become standardized views, then one tested analytics mart.",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "strokeColor": "#94a3b8",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "text",
+      "id": "l_source_col",
+      "x": 869.6,
+      "y": 255.68,
+      "text": "SOURCES",
+      "fontSize": 11.78,
+      "fontFamily": 2,
+      "strokeColor": "#7dd3fc",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "text",
+      "id": "l_stage_col",
+      "x": 1087.84,
+      "y": 255.68,
+      "text": "STAGING VIEWS",
+      "fontSize": 11.78,
+      "fontFamily": 2,
+      "strokeColor": "#c4b5fd",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "text",
+      "id": "l_mart_col",
+      "x": 1351.96,
+      "y": 255.68,
+      "text": "MART TABLE",
+      "fontSize": 11.78,
+      "fontFamily": 2,
+      "strokeColor": "#86efac",
+      "width": null,
+      "height": null
+    },
+    {
+      "type": "rectangle",
+      "id": "l_orders_src",
+      "x": 864.64,
+      "y": 290.4,
+      "width": 155,
+      "height": 110.36,
+      "backgroundColor": "#1e3a5f",
+      "fillStyle": "solid",
+      "strokeColor": "#38bdf8",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_orders_src_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_orders_src_label",
+      "x": 870.84,
+      "y": 296.6,
+      "width": 142.6,
+      "height": 97.96,
+      "text": "TPCH_SF1.ORDERS\n\n1,500,000 rows\norder key, customer key\nstatus, price, date",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_orders_src",
+      "strokeColor": "#f0f9ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "l_customer_src",
+      "x": 864.64,
+      "y": 477.64,
+      "width": 155,
+      "height": 110.36,
+      "backgroundColor": "#1e3a5f",
+      "fillStyle": "solid",
+      "strokeColor": "#38bdf8",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_customer_src_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_customer_src_label",
+      "x": 870.84,
+      "y": 483.84,
+      "width": 142.6,
+      "height": 97.96,
+      "text": "TPCH_SF1.CUSTOMER\n\n150,000 rows\ncustomer key, name\nsegment, account balance",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_customer_src",
+      "strokeColor": "#f0f9ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "l_orders_stage",
+      "x": 1069.24,
+      "y": 286.68,
+      "width": 186,
+      "height": 117.8,
+      "backgroundColor": "#2d1b69",
+      "fillStyle": "solid",
+      "strokeColor": "#a78bfa",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_orders_stage_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_orders_stage_label",
+      "x": 1075.44,
+      "y": 292.88,
+      "width": 173.6,
+      "height": 105.4,
+      "text": "stg_tpch__orders\nVIEW\n\nRenames source columns\nStandardizes order fields",
+      "fontSize": 11.78,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_orders_stage",
+      "strokeColor": "#f5f3ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "l_orders_tests",
+      "x": 1085.3600000000001,
+      "y": 419.36,
+      "width": 153.76,
+      "height": 50.839999999999996,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_orders_tests_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_orders_tests_label",
+      "x": 1091.56,
+      "y": 425.56,
+      "width": 141.35999999999999,
+      "height": 38.44,
+      "text": "3 tests\nunique + not_null",
+      "fontSize": 10.54,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_orders_tests",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "rectangle",
+      "id": "l_customer_stage",
+      "x": 1069.24,
+      "y": 473.92,
+      "width": 186,
+      "height": 117.8,
+      "backgroundColor": "#2d1b69",
+      "fillStyle": "solid",
+      "strokeColor": "#a78bfa",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_customer_stage_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_customer_stage_label",
+      "x": 1075.44,
+      "y": 480.12,
+      "width": 173.6,
+      "height": 105.4,
+      "text": "stg_tpch__customers\nVIEW\n\nRenames source columns\nStandardizes customer fields",
+      "fontSize": 11.78,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_customer_stage",
+      "strokeColor": "#f5f3ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "l_customer_tests",
+      "x": 1085.3600000000001,
+      "y": 606.6,
+      "width": 153.76,
+      "height": 50.839999999999996,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_customer_tests_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_customer_tests_label",
+      "x": 1091.56,
+      "y": 612.8,
+      "width": 141.35999999999999,
+      "height": 38.44,
+      "text": "3 tests\nunique + not_null",
+      "fontSize": 10.54,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_customer_tests",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "rectangle",
+      "id": "l_fct_orders",
+      "x": 1338.3200000000002,
+      "y": 353.64,
+      "width": 186,
+      "height": 161.2,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_fct_orders_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_fct_orders_label",
+      "x": 1344.52,
+      "y": 359.84000000000003,
+      "width": 173.6,
+      "height": 148.8,
+      "text": "fct_orders\nTABLE\n\n1,500,000 enriched rows\nOrders joined to customers\nCustomer name + segment\nOrder status + value + date",
+      "fontSize": 11.78,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_fct_orders",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "rectangle",
+      "id": "l_mart_tests",
+      "x": 1354.44,
+      "y": 538.4,
+      "width": 153.76,
+      "height": 65.72,
+      "backgroundColor": "#164e3b",
+      "fillStyle": "solid",
+      "strokeColor": "#6ee7b7",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_mart_tests_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_mart_tests_label",
+      "x": 1360.6399999999999,
+      "y": 544.6,
+      "width": 141.35999999999999,
+      "height": 53.32,
+      "text": "4 tests\nunique + not_null\nreferential integrity",
+      "fontSize": 10.54,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_mart_tests",
+      "strokeColor": "#ecfdf5"
+    },
+    {
+      "type": "arrow",
+      "id": "l_lin_a1",
+      "x": 1019.64,
+      "y": 345.58000000000004,
+      "width": 49.6,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          49.6,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#7dd3fc",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "l_orders_src",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "l_orders_stage",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "l_lin_a1_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "l_lin_a1_label",
+      "x": 1025.84,
+      "y": 351.78,
+      "width": 37.2,
+      "height": 24.8,
+      "text": "source()",
+      "fontSize": 9.92,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_lin_a1",
+      "strokeColor": "#bae6fd"
+    },
+    {
+      "type": "arrow",
+      "id": "l_lin_a2",
+      "x": 1019.64,
+      "y": 532.8199999999999,
+      "width": 49.6,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          49.6,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#7dd3fc",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "l_customer_src",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "l_customer_stage",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "l_lin_a2_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "l_lin_a2_label",
+      "x": 1025.84,
+      "y": 539.02,
+      "width": 37.2,
+      "height": 24.8,
+      "text": "source()",
+      "fontSize": 9.92,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_lin_a2",
+      "strokeColor": "#bae6fd"
+    },
+    {
+      "type": "arrow",
+      "id": "l_lin_a3",
+      "x": 1255.24,
+      "y": 345.58000000000004,
+      "width": 83.08,
+      "height": 57.04,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          44.64,
+          0
+        ],
+        [
+          83.08,
+          57.04
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#c4b5fd",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "l_orders_stage",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "l_fct_orders",
+        "fixedPoint": [
+          0,
+          0.3
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "l_lin_a3_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "l_lin_a3_label",
+      "x": 1261.44,
+      "y": 351.78,
+      "width": 70.67999999999999,
+      "height": 44.64,
+      "text": "ref()",
+      "fontSize": 9.92,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_lin_a3",
+      "strokeColor": "#ddd6fe"
+    },
+    {
+      "type": "arrow",
+      "id": "l_lin_a4",
+      "x": 1255.24,
+      "y": 532.8199999999999,
+      "width": 83.08,
+      "height": -66.96,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          44.64,
+          0
+        ],
+        [
+          83.08,
+          -66.96
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#c4b5fd",
+      "strokeWidth": 1.8599999999999999,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "l_customer_stage",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "l_fct_orders",
+        "fixedPoint": [
+          0,
+          0.7
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "l_lin_a4_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "l_lin_a4_label",
+      "x": 1261.44,
+      "y": 539.02,
+      "width": 70.67999999999999,
+      "height": -79.36,
+      "text": "ref()",
+      "fontSize": 9.92,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_lin_a4",
+      "strokeColor": "#ddd6fe"
+    },
+    {
+      "type": "arrow",
+      "id": "l_test_a1",
+      "x": 1162.24,
+      "y": 404.48,
+      "width": 0,
+      "height": 14.879999999999999,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          14.879999999999999
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#4ade80",
+      "strokeWidth": 1.24,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "l_orders_stage",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "l_orders_tests",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "arrow",
+      "id": "l_test_a2",
+      "x": 1162.24,
+      "y": 591.72,
+      "width": 0,
+      "height": 14.879999999999999,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          14.879999999999999
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#4ade80",
+      "strokeWidth": 1.24,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "l_customer_stage",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "l_customer_tests",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "arrow",
+      "id": "l_test_a3",
+      "x": 1431.3200000000002,
+      "y": 514.8399999999999,
+      "width": 0,
+      "height": 23.56,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          23.56
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#6ee7b7",
+      "strokeWidth": 1.24,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "l_fct_orders",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "l_mart_tests",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "l_quality_footer",
+      "x": 864.64,
+      "y": 673.56,
+      "width": 659.68,
+      "height": 26.04,
+      "backgroundColor": "#10281d",
+      "fillStyle": "solid",
+      "strokeColor": "#22c55e",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "l_quality_footer_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "l_quality_footer_label",
+      "x": 870.84,
+      "y": 679.76,
+      "width": 647.28,
+      "height": 13.64,
+      "text": "QUALITY RESULT: 10 PASS  |  0 WARN  |  0 ERROR  |  0 SKIP",
+      "fontSize": 11.16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "l_quality_footer",
+      "strokeColor": "#86efac"
+    },
+    {
+      "type": "rectangle",
+      "id": "metric_1",
+      "x": 70,
+      "y": 792,
+      "width": 430,
+      "height": 190,
+      "backgroundColor": "#1e3a5f",
+      "fillStyle": "solid",
+      "strokeColor": "#38bdf8",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "metric_1_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "metric_1_label",
+      "x": 80,
+      "y": 802,
+      "width": 410,
+      "height": 170,
+      "text": "1,500,000\norders transformed",
+      "fontSize": 28,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "metric_1",
+      "strokeColor": "#f0f9ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "metric_2",
+      "x": 585,
+      "y": 792,
+      "width": 430,
+      "height": 190,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "metric_2_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "metric_2_label",
+      "x": 595,
+      "y": 802,
+      "width": 410,
+      "height": 170,
+      "text": "10 / 10\ndata tests passing",
+      "fontSize": 28,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "metric_2",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "rectangle",
+      "id": "metric_3",
+      "x": 1100,
+      "y": 792,
+      "width": 430,
+      "height": 190,
+      "backgroundColor": "#5c3d1a",
+      "fillStyle": "solid",
+      "strokeColor": "#fb923c",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "metric_3_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "metric_3_label",
+      "x": 1110,
+      "y": 802,
+      "width": 410,
+      "height": 170,
+      "text": "35 seconds\nAirflow DAG run",
+      "fontSize": 28,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "metric_3",
+      "strokeColor": "#fff7ed"
+    },
+    {
+      "type": "text",
+      "id": "combined_footer",
+      "x": 394,
+      "y": 1060,
+      "text": "Source-controlled SQL  |  Tested transformations  |  Observable orchestration",
+      "fontSize": 24,
+      "fontFamily": 2,
+      "strokeColor": "#cbd5e1"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff",
+    "gridSize": null
+  },
+  "files": {}
+}

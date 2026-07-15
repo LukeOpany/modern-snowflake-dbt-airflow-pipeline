@@ -1,0 +1,750 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "excalidraw-cli",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "lin_bg",
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 900,
+      "backgroundColor": "#0b1220",
+      "fillStyle": "solid",
+      "strokeColor": "#0b1220",
+      "strokeWidth": 0,
+      "roughness": 0,
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "lin_title",
+      "x": 64,
+      "y": 46,
+      "text": "dbt Model Lineage and Quality Contracts",
+      "fontSize": 36,
+      "fontFamily": 2,
+      "strokeColor": "#f8fafc"
+    },
+    {
+      "type": "text",
+      "id": "lin_subtitle",
+      "x": 66,
+      "y": 96,
+      "text": "Two Snowflake sources become standardized views, then one tested analytics mart.",
+      "fontSize": 18,
+      "fontFamily": 2,
+      "strokeColor": "#94a3b8"
+    },
+    {
+      "type": "text",
+      "id": "source_col",
+      "x": 80,
+      "y": 164,
+      "text": "SOURCES",
+      "fontSize": 19,
+      "fontFamily": 2,
+      "strokeColor": "#7dd3fc"
+    },
+    {
+      "type": "text",
+      "id": "stage_col",
+      "x": 432,
+      "y": 164,
+      "text": "STAGING VIEWS",
+      "fontSize": 19,
+      "fontFamily": 2,
+      "strokeColor": "#c4b5fd"
+    },
+    {
+      "type": "text",
+      "id": "mart_col",
+      "x": 858,
+      "y": 164,
+      "text": "MART TABLE",
+      "fontSize": 19,
+      "fontFamily": 2,
+      "strokeColor": "#86efac"
+    },
+    {
+      "type": "rectangle",
+      "id": "orders_src",
+      "x": 72,
+      "y": 220,
+      "width": 250,
+      "height": 178,
+      "backgroundColor": "#1e3a5f",
+      "fillStyle": "solid",
+      "strokeColor": "#38bdf8",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "orders_src_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "orders_src_label",
+      "x": 82,
+      "y": 230,
+      "width": 230,
+      "height": 158,
+      "text": "TPCH_SF1.ORDERS\n\n1,500,000 rows\norder key, customer key\nstatus, price, date",
+      "fontSize": 18,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "orders_src",
+      "strokeColor": "#f0f9ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "customer_src",
+      "x": 72,
+      "y": 522,
+      "width": 250,
+      "height": 178,
+      "backgroundColor": "#1e3a5f",
+      "fillStyle": "solid",
+      "strokeColor": "#38bdf8",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "customer_src_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "customer_src_label",
+      "x": 82,
+      "y": 532,
+      "width": 230,
+      "height": 158,
+      "text": "TPCH_SF1.CUSTOMER\n\n150,000 rows\ncustomer key, name\nsegment, account balance",
+      "fontSize": 18,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "customer_src",
+      "strokeColor": "#f0f9ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "orders_stage",
+      "x": 402,
+      "y": 214,
+      "width": 300,
+      "height": 190,
+      "backgroundColor": "#2d1b69",
+      "fillStyle": "solid",
+      "strokeColor": "#a78bfa",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "orders_stage_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "orders_stage_label",
+      "x": 412,
+      "y": 224,
+      "width": 280,
+      "height": 170,
+      "text": "stg_tpch__orders\nVIEW\n\nRenames source columns\nStandardizes order fields",
+      "fontSize": 19,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "orders_stage",
+      "strokeColor": "#f5f3ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "orders_tests",
+      "x": 428,
+      "y": 428,
+      "width": 248,
+      "height": 82,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "orders_tests_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "orders_tests_label",
+      "x": 438,
+      "y": 438,
+      "width": 228,
+      "height": 62,
+      "text": "3 tests\nunique + not_null",
+      "fontSize": 17,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "orders_tests",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "rectangle",
+      "id": "customer_stage",
+      "x": 402,
+      "y": 516,
+      "width": 300,
+      "height": 190,
+      "backgroundColor": "#2d1b69",
+      "fillStyle": "solid",
+      "strokeColor": "#a78bfa",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "customer_stage_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "customer_stage_label",
+      "x": 412,
+      "y": 526,
+      "width": 280,
+      "height": 170,
+      "text": "stg_tpch__customers\nVIEW\n\nRenames source columns\nStandardizes customer fields",
+      "fontSize": 19,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "customer_stage",
+      "strokeColor": "#f5f3ff"
+    },
+    {
+      "type": "rectangle",
+      "id": "customer_tests",
+      "x": 428,
+      "y": 730,
+      "width": 248,
+      "height": 82,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "customer_tests_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "customer_tests_label",
+      "x": 438,
+      "y": 740,
+      "width": 228,
+      "height": 62,
+      "text": "3 tests\nunique + not_null",
+      "fontSize": 17,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "customer_tests",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "rectangle",
+      "id": "fct_orders",
+      "x": 836,
+      "y": 322,
+      "width": 300,
+      "height": 260,
+      "backgroundColor": "#1a4d2e",
+      "fillStyle": "solid",
+      "strokeColor": "#4ade80",
+      "strokeWidth": 3,
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "fct_orders_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "fct_orders_label",
+      "x": 846,
+      "y": 332,
+      "width": 280,
+      "height": 240,
+      "text": "fct_orders\nTABLE\n\n1,500,000 enriched rows\nOrders joined to customers\nCustomer name + segment\nOrder status + value + date",
+      "fontSize": 19,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "fct_orders",
+      "strokeColor": "#f0fdf4"
+    },
+    {
+      "type": "rectangle",
+      "id": "mart_tests",
+      "x": 862,
+      "y": 620,
+      "width": 248,
+      "height": 106,
+      "backgroundColor": "#164e3b",
+      "fillStyle": "solid",
+      "strokeColor": "#6ee7b7",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "mart_tests_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "mart_tests_label",
+      "x": 872,
+      "y": 630,
+      "width": 228,
+      "height": 86,
+      "text": "4 tests\nunique + not_null\nreferential integrity",
+      "fontSize": 17,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "mart_tests",
+      "strokeColor": "#ecfdf5"
+    },
+    {
+      "type": "arrow",
+      "id": "lin_a1",
+      "x": 322,
+      "y": 309,
+      "width": 80,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          80,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#7dd3fc",
+      "strokeWidth": 3,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "orders_src",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "orders_stage",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "lin_a1_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "lin_a1_label",
+      "x": 332,
+      "y": 319,
+      "width": 60,
+      "height": 40,
+      "text": "source()",
+      "fontSize": 16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "lin_a1",
+      "strokeColor": "#bae6fd"
+    },
+    {
+      "type": "arrow",
+      "id": "lin_a2",
+      "x": 322,
+      "y": 611,
+      "width": 80,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          80,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#7dd3fc",
+      "strokeWidth": 3,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "customer_src",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "customer_stage",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "lin_a2_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "lin_a2_label",
+      "x": 332,
+      "y": 621,
+      "width": 60,
+      "height": 40,
+      "text": "source()",
+      "fontSize": 16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "lin_a2",
+      "strokeColor": "#bae6fd"
+    },
+    {
+      "type": "arrow",
+      "id": "lin_a3",
+      "x": 702,
+      "y": 309,
+      "width": 134,
+      "height": 92,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          72,
+          0
+        ],
+        [
+          134,
+          92
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#c4b5fd",
+      "strokeWidth": 3,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "orders_stage",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "fct_orders",
+        "fixedPoint": [
+          0,
+          0.3
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "lin_a3_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "lin_a3_label",
+      "x": 712,
+      "y": 319,
+      "width": 114,
+      "height": 72,
+      "text": "ref()",
+      "fontSize": 16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "lin_a3",
+      "strokeColor": "#ddd6fe"
+    },
+    {
+      "type": "arrow",
+      "id": "lin_a4",
+      "x": 702,
+      "y": 611,
+      "width": 134,
+      "height": -108,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          72,
+          0
+        ],
+        [
+          134,
+          -108
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#c4b5fd",
+      "strokeWidth": 3,
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "customer_stage",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "fct_orders",
+        "fixedPoint": [
+          0,
+          0.7
+        ]
+      },
+      "boundElements": [
+        {
+          "id": "lin_a4_label",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "lin_a4_label",
+      "x": 712,
+      "y": 621,
+      "width": 114,
+      "height": -128,
+      "text": "ref()",
+      "fontSize": 16,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "lin_a4",
+      "strokeColor": "#ddd6fe"
+    },
+    {
+      "type": "arrow",
+      "id": "test_a1",
+      "x": 552,
+      "y": 404,
+      "width": 0,
+      "height": 24,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          24
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#4ade80",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "orders_stage",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "orders_tests",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "arrow",
+      "id": "test_a2",
+      "x": 552,
+      "y": 706,
+      "width": 0,
+      "height": 24,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          24
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#4ade80",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "customer_stage",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "customer_tests",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "arrow",
+      "id": "test_a3",
+      "x": 986,
+      "y": 582,
+      "width": 0,
+      "height": 38,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          38
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "strokeColor": "#6ee7b7",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "startBinding": {
+        "elementId": "fct_orders",
+        "fixedPoint": [
+          0.5,
+          1
+        ]
+      },
+      "endBinding": {
+        "elementId": "mart_tests",
+        "fixedPoint": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "type": "rectangle",
+      "id": "quality_footer",
+      "x": 72,
+      "y": 838,
+      "width": 1064,
+      "height": 42,
+      "backgroundColor": "#10281d",
+      "fillStyle": "solid",
+      "strokeColor": "#22c55e",
+      "roughness": 1,
+      "boundElements": [
+        {
+          "id": "quality_footer_label",
+          "type": "text"
+        }
+      ],
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "quality_footer_label",
+      "x": 82,
+      "y": 848,
+      "width": 1044,
+      "height": 22,
+      "text": "QUALITY RESULT: 10 PASS  |  0 WARN  |  0 ERROR  |  0 SKIP",
+      "fontSize": 18,
+      "fontFamily": 2,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "quality_footer",
+      "strokeColor": "#86efac"
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff",
+    "gridSize": null
+  },
+  "files": {}
+}
