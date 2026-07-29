@@ -4,694 +4,482 @@
   "source": "excalidraw-cli",
   "elements": [
     {
-      "type": "rectangle",
-      "id": "arch_bg",
-      "x": 0,
-      "y": 0,
-      "width": 1200,
-      "height": 900,
-      "backgroundColor": "#0b1220",
-      "fillStyle": "solid",
-      "strokeColor": "#0b1220",
-      "strokeWidth": 0,
-      "roughness": 0,
-      "roundness": {
-        "type": 3
-      }
+      "type": "text",
+      "id": "title",
+      "x": 70,
+      "y": 50,
+      "text": "End-to-end analytics pipeline",
+      "fontSize": 40,
+      "strokeColor": "#0f172a",
+      "fontFamily": 1
     },
     {
       "type": "text",
-      "id": "arch_title",
-      "x": 64,
-      "y": 48,
-      "text": "Modern Analytics Engineering Pipeline",
-      "fontSize": 36,
-      "fontFamily": 2,
-      "strokeColor": "#f8fafc"
-    },
-    {
-      "type": "text",
-      "id": "arch_subtitle",
-      "x": 66,
-      "y": 98,
-      "text": "Airflow orchestrates dbt transformations and quality checks inside Snowflake.",
-      "fontSize": 18,
-      "fontFamily": 2,
-      "strokeColor": "#94a3b8"
-    },
-    {
-      "type": "rectangle",
-      "id": "control_zone",
-      "x": 58,
-      "y": 158,
-      "width": 1084,
-      "height": 250,
-      "backgroundColor": "#111c30",
-      "fillStyle": "solid",
-      "strokeColor": "#334155",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "roundness": {
-        "type": 3
-      }
-    },
-    {
-      "type": "text",
-      "id": "control_title",
-      "x": 84,
-      "y": 182,
-      "text": "ORCHESTRATION PLANE",
+      "id": "subtitle",
+      "x": 72,
+      "y": 105,
+      "text": "CSV generation → Snowflake ingestion → dbt transformation → tested mart",
       "fontSize": 20,
-      "fontFamily": 2,
-      "strokeColor": "#67e8f9"
+      "strokeColor": "#475569",
+      "fontFamily": 1
     },
     {
-      "type": "ellipse",
+      "type": "rectangle",
       "id": "airflow",
-      "x": 92,
-      "y": 260,
-      "width": 190,
-      "height": 84,
-      "backgroundColor": "#164e63",
+      "x": 70,
+      "y": 165,
+      "width": 1460,
+      "height": 110,
+      "backgroundColor": "#e0f2fe",
+      "strokeColor": "#38bdf8",
       "fillStyle": "solid",
-      "strokeColor": "#22d3ee",
-      "roughness": 1,
+      "roundness": {
+        "type": 3
+      },
       "boundElements": [
         {
           "id": "airflow_label",
           "type": "text"
         }
       ],
-      "roundness": {
-        "type": 3
-      }
+      "roughness": 2
     },
     {
       "type": "text",
       "id": "airflow_label",
-      "x": 102,
-      "y": 270,
-      "width": 170,
-      "height": 64,
-      "text": "Airflow DAG",
-      "fontSize": 22,
-      "fontFamily": 2,
+      "x": 80,
+      "y": 175,
+      "width": 1440,
+      "height": 90,
+      "text": "AIRFLOW  |  ingest_raw_data  →  validate_dbt_connection  →  run_dbt_models  →  test_dbt_models  ✓",
+      "fontSize": 20,
+      "fontFamily": 1,
       "textAlign": "center",
       "verticalAlign": "middle",
       "containerId": "airflow",
-      "strokeColor": "#ecfeff"
+      "strokeColor": "#38bdf8"
     },
     {
       "type": "rectangle",
-      "id": "debug",
-      "x": 352,
-      "y": 260,
-      "width": 190,
-      "height": 84,
-      "backgroundColor": "#1e3a5f",
+      "id": "csv",
+      "x": 70,
+      "y": 360,
+      "width": 220,
+      "height": 150,
+      "backgroundColor": "#ffec99",
+      "strokeColor": "#f59f00",
       "fillStyle": "solid",
-      "strokeColor": "#60a5fa",
-      "roughness": 1,
+      "roundness": {
+        "type": 3
+      },
       "boundElements": [
         {
-          "id": "debug_label",
+          "id": "csv_label",
           "type": "text"
         }
       ],
-      "roundness": {
-        "type": 3
-      }
+      "roughness": 2
     },
     {
       "type": "text",
-      "id": "debug_label",
-      "x": 362,
-      "y": 270,
-      "width": 170,
-      "height": 64,
-      "text": "1. dbt debug\nValidate connection",
-      "fontSize": 18,
-      "fontFamily": 2,
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "containerId": "debug",
-      "strokeColor": "#eff6ff"
-    },
-    {
-      "type": "rectangle",
-      "id": "run",
-      "x": 616,
-      "y": 260,
-      "width": 190,
-      "height": 84,
-      "backgroundColor": "#5c3d1a",
-      "fillStyle": "solid",
-      "strokeColor": "#fb923c",
-      "roughness": 1,
-      "boundElements": [
-        {
-          "id": "run_label",
-          "type": "text"
-        }
-      ],
-      "roundness": {
-        "type": 3
-      }
-    },
-    {
-      "type": "text",
-      "id": "run_label",
-      "x": 626,
-      "y": 270,
-      "width": 170,
-      "height": 64,
-      "text": "2. dbt run\nBuild models",
-      "fontSize": 18,
-      "fontFamily": 2,
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "containerId": "run",
-      "strokeColor": "#fff7ed"
-    },
-    {
-      "type": "rectangle",
-      "id": "test",
-      "x": 880,
-      "y": 260,
-      "width": 190,
-      "height": 84,
-      "backgroundColor": "#1a4d2e",
-      "fillStyle": "solid",
-      "strokeColor": "#4ade80",
-      "roughness": 1,
-      "boundElements": [
-        {
-          "id": "test_label",
-          "type": "text"
-        }
-      ],
-      "roundness": {
-        "type": 3
-      }
-    },
-    {
-      "type": "text",
-      "id": "test_label",
-      "x": 890,
-      "y": 270,
-      "width": 170,
-      "height": 64,
-      "text": "3. dbt test\nEnforce quality",
-      "fontSize": 18,
-      "fontFamily": 2,
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "containerId": "test",
-      "strokeColor": "#f0fdf4"
-    },
-    {
-      "type": "arrow",
-      "id": "ctrl_a1",
-      "x": 282,
-      "y": 302,
-      "width": 70,
-      "height": 0,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          70,
-          0
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "strokeColor": "#cbd5e1",
-      "strokeWidth": 3,
-      "roughness": 1,
-      "startBinding": {
-        "elementId": "airflow",
-        "fixedPoint": [
-          1,
-          0.5
-        ]
-      },
-      "endBinding": {
-        "elementId": "debug",
-        "fixedPoint": [
-          0,
-          0.5
-        ]
-      }
-    },
-    {
-      "type": "arrow",
-      "id": "ctrl_a2",
-      "x": 542,
-      "y": 302,
-      "width": 74,
-      "height": 0,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          74,
-          0
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "strokeColor": "#cbd5e1",
-      "strokeWidth": 3,
-      "roughness": 1,
-      "startBinding": {
-        "elementId": "debug",
-        "fixedPoint": [
-          1,
-          0.5
-        ]
-      },
-      "endBinding": {
-        "elementId": "run",
-        "fixedPoint": [
-          0,
-          0.5
-        ]
-      }
-    },
-    {
-      "type": "arrow",
-      "id": "ctrl_a3",
-      "x": 806,
-      "y": 302,
-      "width": 74,
-      "height": 0,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          74,
-          0
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "strokeColor": "#cbd5e1",
-      "strokeWidth": 3,
-      "roughness": 1,
-      "startBinding": {
-        "elementId": "run",
-        "fixedPoint": [
-          1,
-          0.5
-        ]
-      },
-      "endBinding": {
-        "elementId": "test",
-        "fixedPoint": [
-          0,
-          0.5
-        ]
-      }
-    },
-    {
-      "type": "rectangle",
-      "id": "data_zone",
-      "x": 58,
-      "y": 444,
-      "width": 1084,
-      "height": 304,
-      "backgroundColor": "#101b2d",
-      "fillStyle": "solid",
-      "strokeColor": "#334155",
-      "strokeWidth": 2,
-      "roughness": 1,
-      "roundness": {
-        "type": 3
-      }
-    },
-    {
-      "type": "text",
-      "id": "data_title",
-      "x": 84,
-      "y": 468,
-      "text": "SNOWFLAKE DATA PLANE",
+      "id": "csv_label",
+      "x": 80,
+      "y": 370,
+      "width": 200,
+      "height": 130,
+      "text": "Synthetic CSVs\n931 customers\n72,892 orders",
       "fontSize": 20,
-      "fontFamily": 2,
-      "strokeColor": "#7dd3fc"
+      "fontFamily": 1,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "csv",
+      "strokeColor": "#f59f00"
     },
     {
       "type": "rectangle",
-      "id": "tpch",
-      "x": 92,
-      "y": 552,
-      "width": 230,
-      "height": 108,
-      "backgroundColor": "#1e3a5f",
+      "id": "loader",
+      "x": 330,
+      "y": 360,
+      "width": 220,
+      "height": 150,
+      "backgroundColor": "#d0bfff",
+      "strokeColor": "#845ef7",
       "fillStyle": "solid",
-      "strokeColor": "#38bdf8",
-      "roughness": 1,
+      "roundness": {
+        "type": 3
+      },
       "boundElements": [
         {
-          "id": "tpch_label",
+          "id": "loader_label",
           "type": "text"
         }
       ],
-      "roundness": {
-        "type": 3
-      }
+      "roughness": 2
     },
     {
       "type": "text",
-      "id": "tpch_label",
-      "x": 102,
-      "y": 562,
-      "width": 210,
-      "height": 88,
-      "text": "TPC-H SF1 sources\nORDERS  |  CUSTOMER",
+      "id": "loader_label",
+      "x": 340,
+      "y": 370,
+      "width": 200,
+      "height": 130,
+      "text": "Python ingestor\nvalidate + stage + COPY",
       "fontSize": 20,
-      "fontFamily": 2,
+      "fontFamily": 1,
       "textAlign": "center",
       "verticalAlign": "middle",
-      "containerId": "tpch",
-      "strokeColor": "#f0f9ff"
+      "containerId": "loader",
+      "strokeColor": "#845ef7"
+    },
+    {
+      "type": "rectangle",
+      "id": "raw",
+      "x": 590,
+      "y": 360,
+      "width": 220,
+      "height": 150,
+      "backgroundColor": "#d0bfff",
+      "strokeColor": "#845ef7",
+      "fillStyle": "solid",
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "raw_label",
+          "type": "text"
+        }
+      ],
+      "roughness": 2
+    },
+    {
+      "type": "text",
+      "id": "raw_label",
+      "x": 600,
+      "y": 370,
+      "width": 200,
+      "height": 130,
+      "text": "Snowflake RAW\nRAW_CUSTOMERS\nRAW_ORDERS",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "raw",
+      "strokeColor": "#845ef7"
     },
     {
       "type": "rectangle",
       "id": "staging",
-      "x": 416,
-      "y": 532,
-      "width": 260,
-      "height": 148,
-      "backgroundColor": "#2d1b69",
+      "x": 850,
+      "y": 360,
+      "width": 220,
+      "height": 150,
+      "backgroundColor": "#a5d8ff",
+      "strokeColor": "#228be6",
       "fillStyle": "solid",
-      "strokeColor": "#a78bfa",
-      "roughness": 1,
+      "roundness": {
+        "type": 3
+      },
       "boundElements": [
         {
           "id": "staging_label",
           "type": "text"
         }
       ],
-      "roundness": {
-        "type": 3
-      }
+      "roughness": 2
     },
     {
       "type": "text",
       "id": "staging_label",
-      "x": 426,
-      "y": 542,
-      "width": 240,
-      "height": 128,
-      "text": "dbt staging views\nstg_tpch__orders\nstg_tpch__customers",
-      "fontSize": 19,
-      "fontFamily": 2,
+      "x": 860,
+      "y": 370,
+      "width": 200,
+      "height": 130,
+      "text": "dbt staging views\nnames + dates + currency",
+      "fontSize": 20,
+      "fontFamily": 1,
       "textAlign": "center",
       "verticalAlign": "middle",
       "containerId": "staging",
-      "strokeColor": "#f5f3ff"
+      "strokeColor": "#228be6"
     },
     {
       "type": "rectangle",
       "id": "mart",
-      "x": 792,
-      "y": 552,
-      "width": 260,
-      "height": 108,
-      "backgroundColor": "#1a4d2e",
+      "x": 1110,
+      "y": 360,
+      "width": 220,
+      "height": 150,
+      "backgroundColor": "#b2f2bb",
+      "strokeColor": "#40c057",
       "fillStyle": "solid",
-      "strokeColor": "#4ade80",
-      "roughness": 1,
+      "roundness": {
+        "type": 3
+      },
       "boundElements": [
         {
           "id": "mart_label",
           "type": "text"
         }
       ],
-      "roundness": {
-        "type": 3
-      }
+      "roughness": 2
     },
     {
       "type": "text",
       "id": "mart_label",
-      "x": 802,
-      "y": 562,
-      "width": 240,
-      "height": 88,
-      "text": "fct_orders\nEnriched analytics mart",
+      "x": 1120,
+      "y": 370,
+      "width": 200,
+      "height": 130,
+      "text": "FCT_JAFFLE_ORDERS\ncustomer-enriched mart",
       "fontSize": 20,
-      "fontFamily": 2,
+      "fontFamily": 1,
       "textAlign": "center",
       "verticalAlign": "middle",
       "containerId": "mart",
-      "strokeColor": "#f0fdf4"
-    },
-    {
-      "type": "arrow",
-      "id": "data_a1",
-      "x": 322,
-      "y": 606,
-      "width": 94,
-      "height": 0,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          94,
-          0
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "strokeColor": "#7dd3fc",
-      "strokeWidth": 3,
-      "roughness": 1,
-      "startBinding": {
-        "elementId": "tpch",
-        "fixedPoint": [
-          1,
-          0.5
-        ]
-      },
-      "endBinding": {
-        "elementId": "staging",
-        "fixedPoint": [
-          0,
-          0.5
-        ]
-      },
-      "boundElements": [
-        {
-          "id": "data_a1_label",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "id": "data_a1_label",
-      "x": 332,
-      "y": 616,
-      "width": 74,
-      "height": 40,
-      "text": "source()",
-      "fontSize": 16,
-      "fontFamily": 2,
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "containerId": "data_a1",
-      "strokeColor": "#bae6fd"
-    },
-    {
-      "type": "arrow",
-      "id": "data_a2",
-      "x": 676,
-      "y": 606,
-      "width": 116,
-      "height": 0,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          116,
-          0
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "strokeColor": "#c4b5fd",
-      "strokeWidth": 3,
-      "roughness": 1,
-      "startBinding": {
-        "elementId": "staging",
-        "fixedPoint": [
-          1,
-          0.5
-        ]
-      },
-      "endBinding": {
-        "elementId": "mart",
-        "fixedPoint": [
-          0,
-          0.5
-        ]
-      },
-      "boundElements": [
-        {
-          "id": "data_a2_label",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "id": "data_a2_label",
-      "x": 686,
-      "y": 616,
-      "width": 96,
-      "height": 40,
-      "text": "ref() + join",
-      "fontSize": 16,
-      "fontFamily": 2,
-      "textAlign": "center",
-      "verticalAlign": "middle",
-      "containerId": "data_a2",
-      "strokeColor": "#ddd6fe"
-    },
-    {
-      "type": "arrow",
-      "id": "run_to_data",
-      "x": 711,
-      "y": 344,
-      "width": -164,
-      "height": 188,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          -10,
-          74
-        ],
-        [
-          -164,
-          188
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "strokeColor": "#fb923c",
-      "strokeWidth": 2,
-      "strokeStyle": "dashed",
-      "roughness": 1,
-      "startBinding": {
-        "elementId": "run",
-        "fixedPoint": [
-          0.5,
-          1
-        ]
-      },
-      "endBinding": {
-        "elementId": "staging",
-        "fixedPoint": [
-          0.5,
-          0
-        ]
-      }
-    },
-    {
-      "type": "arrow",
-      "id": "test_to_data",
-      "x": 975,
-      "y": 344,
-      "width": -53,
-      "height": 208,
-      "points": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          94
-        ],
-        [
-          -53,
-          208
-        ]
-      ],
-      "endArrowhead": "arrow",
-      "strokeColor": "#4ade80",
-      "strokeWidth": 2,
-      "strokeStyle": "dashed",
-      "roughness": 1,
-      "startBinding": {
-        "elementId": "test",
-        "fixedPoint": [
-          0.5,
-          1
-        ]
-      },
-      "endBinding": {
-        "elementId": "mart",
-        "fixedPoint": [
-          0.5,
-          0
-        ]
-      }
+      "strokeColor": "#40c057"
     },
     {
       "type": "rectangle",
-      "id": "github",
-      "x": 90,
-      "y": 790,
-      "width": 238,
-      "height": 62,
-      "backgroundColor": "#1f2937",
+      "id": "tests",
+      "x": 1370,
+      "y": 360,
+      "width": 160,
+      "height": 150,
+      "backgroundColor": "#b2f2bb",
+      "strokeColor": "#40c057",
       "fillStyle": "solid",
-      "strokeColor": "#64748b",
-      "roughness": 1,
+      "roundness": {
+        "type": 3
+      },
       "boundElements": [
         {
-          "id": "github_label",
+          "id": "tests_label",
           "type": "text"
         }
       ],
-      "roundness": {
-        "type": 3
-      }
+      "roughness": 2
     },
     {
       "type": "text",
-      "id": "github_label",
-      "x": 100,
-      "y": 800,
-      "width": 218,
-      "height": 42,
-      "text": "GitHub version control",
-      "fontSize": 18,
-      "fontFamily": 2,
+      "id": "tests_label",
+      "x": 1380,
+      "y": 370,
+      "width": 140,
+      "height": 130,
+      "text": "28 tests\npassed",
+      "fontSize": 20,
+      "fontFamily": 1,
       "textAlign": "center",
       "verticalAlign": "middle",
-      "containerId": "github",
-      "strokeColor": "#f8fafc"
+      "containerId": "tests",
+      "strokeColor": "#40c057"
+    },
+    {
+      "type": "arrow",
+      "id": "a1",
+      "x": 290,
+      "y": 435,
+      "width": 40,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          40,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "csv",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "loader",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "roughness": 2
+    },
+    {
+      "type": "arrow",
+      "id": "a2",
+      "x": 550,
+      "y": 435,
+      "width": 40,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          40,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "loader",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "raw",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "roughness": 2
+    },
+    {
+      "type": "arrow",
+      "id": "a3",
+      "x": 810,
+      "y": 435,
+      "width": 40,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          40,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "raw",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "staging",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "roughness": 2
+    },
+    {
+      "type": "arrow",
+      "id": "a4",
+      "x": 1070,
+      "y": 435,
+      "width": 40,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          40,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "staging",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "mart",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "roughness": 2
+    },
+    {
+      "type": "arrow",
+      "id": "a5",
+      "x": 1330,
+      "y": 435,
+      "width": 40,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          40,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "mart",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "tests",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "roughness": 2
+    },
+    {
+      "type": "rectangle",
+      "id": "evidence",
+      "x": 70,
+      "y": 620,
+      "width": 1460,
+      "height": 150,
+      "backgroundColor": "#f8f9fa",
+      "strokeColor": "#adb5bd",
+      "fillStyle": "solid",
+      "roundness": {
+        "type": 3
+      },
+      "boundElements": [
+        {
+          "id": "evidence_label",
+          "type": "text"
+        }
+      ],
+      "roughness": 2
     },
     {
       "type": "text",
-      "id": "metrics",
-      "x": 390,
-      "y": 802,
-      "text": "1.5M mart rows   |   3 models   |   10/10 tests passing",
-      "fontSize": 22,
-      "fontFamily": 2,
-      "strokeColor": "#86efac"
+      "id": "evidence_label",
+      "x": 80,
+      "y": 630,
+      "width": 1440,
+      "height": 130,
+      "text": "VERIFIED 29 JULY 2026\n4 sources  ·  6 models  ·  28 tests  ·  four Airflow tasks  ·  01:28 successful run",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "evidence",
+      "strokeColor": "#adb5bd"
     }
   ],
   "appState": {

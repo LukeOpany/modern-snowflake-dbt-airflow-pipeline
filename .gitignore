@@ -24,3 +24,6 @@ airflow/*.pid
 
 # macOS
 .DS_Store
+
+# Locally generated ingestion data
+data/**/*.csv
