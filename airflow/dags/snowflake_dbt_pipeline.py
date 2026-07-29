@@ -6,6 +6,8 @@ from airflow.sdk import DAG
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PYTHON_EXECUTABLE = PROJECT_ROOT / ".venv/bin/python"
+INGESTION_SCRIPT = PROJECT_ROOT / "ingestion/load_to_snowflake.py"
 DBT_EXECUTABLE = PROJECT_ROOT / ".venv/bin/dbt"
 DBT_PROJECT_DIR = PROJECT_ROOT / "dbt/modern_snowflake_pipeline"
 DBT_PROFILES_DIR = Path.home() / ".dbt"
@@ -19,12 +21,17 @@ def dbt_command(command: str) -> str:
 
 with DAG(
     dag_id="snowflake_dbt_pipeline",
-    description="Run and test the Snowflake dbt pipeline",
+    description="Ingest, transform, and test the Snowflake dbt pipeline",
     start_date=pendulum.datetime(2026, 7, 12, tz="Africa/Nairobi"),
     schedule=None,
     catchup=False,
-    tags=["snowflake", "dbt"],
+    tags=["snowflake", "dbt", "ingestion"],
 ) as dag:
+
+    ingest_raw_data = BashOperator(
+        task_id="ingest_raw_data",
+        bash_command=f"{PYTHON_EXECUTABLE} {INGESTION_SCRIPT}",
+    )
 
     validate_connection = BashOperator(
         task_id="validate_dbt_connection",
@@ -41,4 +48,4 @@ with DAG(
         bash_command=dbt_command("test"),
     )
 
-    validate_connection >> run_models >> test_models
+    ingest_raw_data >> validate_connection >> run_models >> test_models
