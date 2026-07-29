@@ -1,78 +1,97 @@
 # Modern Snowflake, dbt, and Airflow Pipeline
 
-An analytics engineering pipeline that transforms **1.5 million Snowflake TPC-H orders** into a tested customer-enriched mart, with dbt handling transformation and quality contracts and Airflow orchestrating the complete workflow.
+An end-to-end analytics engineering pipeline that generates relational order data, bulk-loads it into Snowflake, transforms it with dbt, and orchestrates the complete workflow with Airflow. The project also retains a parallel 1.5-million-row TPC-H path to demonstrate warehouse-native modeling at a larger scale.
 
-**Stack:** Snowflake · dbt Core · Apache Airflow · SQL · Python · GitHub
+**Stack:** Snowflake · dbt Core · Apache Airflow · Python · SQL · GitHub
 
-![Snowflake, dbt, and Airflow system overview](docs/images/pipeline-visuals.png)
+![End-to-end Snowflake, dbt, and Airflow pipeline](docs/images/pipeline-visuals.png)
 
-## Problem
+## Why This Exists
 
-Raw warehouse tables are optimized for storage and source-system fidelity, not consistent downstream analysis. The TPC-H `ORDERS` and `CUSTOMER` tables use source-specific column names, have no project-level quality contracts, and require a repeatable join before analysts can work with customer-level order context.
+Operational files and warehouse source tables are not automatically analytics-ready. They arrive with source-specific names, raw monetary units, no quality contracts, and no reliable execution order.
 
-This project builds that repeatable path:
+This project solves that gap with a repeatable workflow:
 
-1. Declare Snowflake tables as governed dbt sources.
-2. Standardize raw columns in reusable staging views.
-3. Join orders to customers in an analytics-ready fact table.
-4. Test identifiers, required fields, and referential integrity.
-5. Use Airflow to validate the connection, build models, and run tests in sequence.
+1. Generate relational customer and order CSVs locally.
+2. Validate and bulk-load the files into `ANALYTICS.RAW`.
+3. Standardize columns, dates, and currency values in dbt staging views.
+4. Build customer-enriched order marts.
+5. Test identifiers, required fields, and relationships.
+6. Orchestrate ingestion, transformation, and validation as one observable Airflow DAG.
 
-## Evidence at a Glance
+## Verified Results
 
-| Evidence | Verified result |
+| Evidence | Result |
 | --- | ---: |
-| Snowflake source orders | 1,500,000 rows |
-| Snowflake source customers | 150,000 rows |
-| Enriched `fct_orders` mart | 1,500,000 rows |
-| dbt resources | 2 sources, 3 models |
-| Data-quality coverage | 10/10 tests passed |
-| Airflow workflow | 3 dependent tasks succeeded |
-| Observed local DAG run | 35.242 seconds |
+| Jaffle customers loaded into `RAW_CUSTOMERS` | 931 |
+| Jaffle orders loaded into `RAW_ORDERS` | 72,892 |
+| Jaffle order-grain mart | 72,892 rows |
+| TPC-H order-grain mart | 1,500,000 rows |
+| dbt project | 4 sources, 6 models |
+| Data-quality coverage | 28/28 tests passed |
+| Airflow workflow | 4 dependent tasks succeeded |
+| Verified local DAG run | 1 minute 28 seconds |
 
-The duration is evidence from one local manual run, not a performance benchmark.
+The Jaffle counts come from the loader's post-`COPY` verification queries. The mart preserves one row per unique order and joins to a customer source protected by uniqueness and relationship tests. The duration is evidence from one local manual run on 29 July 2026, not a performance benchmark.
 
 ## Architecture
 
 ![Pipeline architecture](docs/images/pipeline-architecture.png)
 
-The design separates two responsibilities:
+- **Ingestion plane:** [`load_to_snowflake.py`](ingestion/load_to_snowflake.py) validates the generated files, creates a Snowflake file format and internal stage, uploads the files, executes `COPY INTO`, and reports loaded row counts.
+- **Transformation plane:** dbt declares governed sources, builds staging views, materializes analytics marts, and executes 28 data tests.
+- **Orchestration plane:** Airflow runs ingestion, connection validation, model building, and testing as a strict dependency chain.
+- **Control plane:** GitHub versions the implementation while `.gitignore` excludes credentials, generated CSVs, virtual environments, Airflow state, logs, and compiled dbt artifacts.
 
-- **Airflow orchestration plane:** runs `dbt debug`, `dbt run`, and `dbt test` as dependent tasks and exposes task-level status and logs.
-- **Snowflake data plane:** stores the source tables, staging views, and final mart; dbt compiles and executes the SQL in the warehouse.
-- **GitHub control plane:** versions the Snowflake setup, dbt models, tests, documentation, and Airflow DAG while excluding credentials and runtime artifacts.
-
-The editable diagram is available in [`docs/diagrams/pipeline-architecture.excalidraw`](docs/diagrams/pipeline-architecture.excalidraw).
+Editable source: [`docs/diagrams/pipeline-architecture.excalidraw`](docs/diagrams/pipeline-architecture.excalidraw)
 
 ## Data Model and Lineage
 
 ![dbt model lineage](docs/images/dbt-model-lineage.png)
 
+### Ingested Jaffle Path
+
 | Model | Materialization | Input | Responsibility |
 | --- | --- | --- | --- |
-| [`stg_tpch__orders`](dbt/modern_snowflake_pipeline/models/staging/tpch/stg_tpch__orders.sql) | View | `TPCH_SF1.ORDERS` | Renames and standardizes order fields. |
-| [`stg_tpch__customers`](dbt/modern_snowflake_pipeline/models/staging/tpch/stg_tpch__customers.sql) | View | `TPCH_SF1.CUSTOMER` | Renames and standardizes customer fields. |
-| [`fct_orders`](dbt/modern_snowflake_pipeline/models/marts/fct_orders.sql) | Table | Both staging views | Enriches each order with customer name and market segment. |
+| [`stg_jaffle__customers`](dbt/modern_snowflake_pipeline/models/staging/jaffle/stg_jaffle__customers.sql) | View | `ANALYTICS.RAW.RAW_CUSTOMERS` | Standardizes customer identity fields. |
+| [`stg_jaffle__orders`](dbt/modern_snowflake_pipeline/models/staging/jaffle/stg_jaffle__orders.sql) | View | `ANALYTICS.RAW.RAW_ORDERS` | Standardizes order fields and converts cents to currency units. |
+| [`fct_jaffle_orders`](dbt/modern_snowflake_pipeline/models/marts/jaffle/fct_jaffle_orders.sql) | Table | Both Jaffle staging views | Produces one customer-enriched row per order. |
 
-The project uses dbt's `source()` and `ref()` functions instead of hard-coded transformation dependencies. This makes the lineage explicit and lets dbt build models in dependency order.
+### Snowflake TPC-H Path
+
+| Model | Materialization | Input | Responsibility |
+| --- | --- | --- | --- |
+| [`stg_tpch__customers`](dbt/modern_snowflake_pipeline/models/staging/tpch/stg_tpch__customers.sql) | View | `TPCH_SF1.CUSTOMER` | Standardizes customer attributes. |
+| [`stg_tpch__orders`](dbt/modern_snowflake_pipeline/models/staging/tpch/stg_tpch__orders.sql) | View | `TPCH_SF1.ORDERS` | Standardizes order attributes. |
+| [`fct_orders`](dbt/modern_snowflake_pipeline/models/marts/fct_orders.sql) | Table | Both TPC-H staging views | Produces the 1.5-million-row customer-enriched order mart. |
+
+All dependencies use dbt's `source()` and `ref()` functions, so lineage is explicit and dbt builds resources in dependency order.
 
 ### Quality Contracts
 
-Tests are defined beside the resources they protect:
+The 28 tests cover:
 
-- Staging orders: uniqueness and completeness of `order_id`, plus completeness of `customer_id`.
-- Staging customers: uniqueness and completeness of `customer_id`, plus completeness of `customer_name`.
-- Orders mart: uniqueness and completeness of `order_id`, completeness of `customer_id`, and customer referential integrity.
+- Unique and non-null customer and order identifiers
+- Required customer names, order dates, stores, and monetary values
+- Order-to-customer referential integrity in staging and marts
+- One-row-per-order expectations for both fact tables
 
-See [`_tpch__sources.yml`](dbt/modern_snowflake_pipeline/models/staging/tpch/_tpch__sources.yml) and [`_marts.yml`](dbt/modern_snowflake_pipeline/models/marts/_marts.yml) for the executable definitions.
+Executable definitions live beside the resources in:
+
+- [`_jaffle__sources.yml`](dbt/modern_snowflake_pipeline/models/staging/jaffle/_jaffle__sources.yml)
+- [`_jaffle_marts.yml`](dbt/modern_snowflake_pipeline/models/marts/jaffle/_jaffle_marts.yml)
+- [`_tpch__sources.yml`](dbt/modern_snowflake_pipeline/models/staging/tpch/_tpch__sources.yml)
+- [`_marts.yml`](dbt/modern_snowflake_pipeline/models/marts/_marts.yml)
 
 ## Orchestration Evidence
 
-![Successful Airflow DAG run](docs/images/airflow-success.png)
+![Successful four-task Airflow DAG run](docs/images/airflow-ingestion-success.jpg)
 
-The [`snowflake_dbt_pipeline`](airflow/dags/snowflake_dbt_pipeline.py) DAG completed all tasks successfully:
+The [`snowflake_dbt_pipeline`](airflow/dags/snowflake_dbt_pipeline.py) DAG completed version 3 successfully:
 
 ```text
+ingest_raw_data
+        ↓
 validate_dbt_connection
         ↓
 run_dbt_models
@@ -80,66 +99,63 @@ run_dbt_models
 test_dbt_models
 ```
 
-Airflow invokes the dbt executable from the project-level Python environment and passes explicit project and profile directories. A failure in validation or model building prevents downstream tasks from running against an invalid state.
+Each task is a failure boundary. Bad credentials or malformed input stop ingestion; a failed dbt connection prevents model execution; model failures prevent tests from presenting a false green result.
 
 ## Repository Structure
 
 ```text
 modern-snowflake-dbt-airflow-pipeline/
 ├── airflow/
-│   └── dags/
-│       └── snowflake_dbt_pipeline.py
+│   └── dags/snowflake_dbt_pipeline.py
+├── data/
+│   └── jaffle-data/                  # generated CSVs, ignored by Git
+├── ingestion/
+│   └── load_to_snowflake.py
 ├── dbt/
 │   └── modern_snowflake_pipeline/
 │       ├── models/
-│       │   ├── staging/tpch/
-│       │   │   ├── _tpch__sources.yml
-│       │   │   ├── stg_tpch__customers.sql
-│       │   │   └── stg_tpch__orders.sql
+│       │   ├── staging/
+│       │   │   ├── jaffle/
+│       │   │   └── tpch/
 │       │   └── marts/
-│       │       ├── _marts.yml
+│       │       ├── jaffle/
 │       │       └── fct_orders.sql
 │       └── dbt_project.yml
 ├── docs/
 │   ├── diagrams/
 │   └── images/
 ├── snowflake/
-│   └── setup.sql
+│   ├── setup.sql
+│   └── raw_setup.sql
 ├── .gitignore
 └── README.md
 ```
 
-## How to Run
+## Run It Locally
 
-### 1. Clone the repository
+### 1. Clone and create the dbt environment
 
 ```bash
 git clone https://github.com/LukeOpany/modern-snowflake-dbt-airflow-pipeline.git
 cd modern-snowflake-dbt-airflow-pipeline
-```
 
-### 2. Provision Snowflake objects
-
-Open [`snowflake/setup.sql`](snowflake/setup.sql) in a Snowflake worksheet. Replace the username in the final `GRANT ROLE` statement with your own Snowflake username, then run the script with a role that can create warehouses, databases, schemas, and roles.
-
-The script creates:
-
-- `TRANSFORMING_WH`, an X-Small auto-suspending warehouse
-- `ANALYTICS`, the project database
-- `ANALYTICS.DBT_DEV`, the development schema
-- `DBT_ROLE`, the least-privilege transformation role
-- Access to `SNOWFLAKE_SAMPLE_DATA`
-
-### 3. Install dbt
-
-The tested local dbt environment uses Python 3.12.
-
-```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install dbt-snowflake==1.11.6
+python -m pip install dbt-snowflake==1.11.6 snowflake-connector-python
 ```
+
+### 2. Provision Snowflake
+
+Run [`snowflake/setup.sql`](snowflake/setup.sql), then [`snowflake/raw_setup.sql`](snowflake/raw_setup.sql), in a Snowflake worksheet using a role that can create and grant the required objects.
+
+This creates or configures:
+
+- `TRANSFORMING_WH`
+- `ANALYTICS.DBT_DEV`
+- `ANALYTICS.RAW`
+- `DBT_ROLE`
+- Access to `SNOWFLAKE_SAMPLE_DATA`
 
 Create `~/.dbt/profiles.yml`:
 
@@ -159,36 +175,52 @@ modern_snowflake_pipeline:
       threads: 4
 ```
 
-Export the password only in your local shell:
+### 3. Generate the ingestion files
+
+From the repository root:
 
 ```bash
-export SNOWFLAKE_PASSWORD='<your-password>'
+cd data
+pipx run jafgen 1 --pre source
+cd ..
 ```
 
-Never commit `profiles.yml`, passwords, or generated Airflow credentials.
+The generated CSVs remain local because `data/**/*.csv` is ignored by Git.
 
-### 4. Build and test the dbt project
+### 4. Export local credentials
 
 ```bash
+export SNOWFLAKE_ACCOUNT='<organization-account>'
+export SNOWFLAKE_USER='<username>'
+export SNOWFLAKE_PASSWORD='<password>'
+```
+
+Never commit these values, `profiles.yml`, or Airflow-generated credentials.
+
+### 5. Run ingestion and dbt directly
+
+```bash
+python ingestion/load_to_snowflake.py
+
 cd dbt/modern_snowflake_pipeline
 dbt debug
 dbt build
 ```
 
-Expected resources:
+Expected dbt resources:
 
 ```text
-3 models
-10 data tests
-2 sources
+4 sources
+6 models
+28 data tests
 ```
 
-### 5. Install and start Airflow
+### 6. Run the complete workflow in Airflow
 
-Return to the repository root, then create Airflow's separate environment:
+The tested Airflow environment uses Python 3.14:
 
 ```bash
-cd ../../airflow
+cd ../../../airflow
 python3.14 -m venv .venv
 source .venv/bin/activate
 
@@ -200,7 +232,7 @@ python -m pip install --upgrade pip
 python -m pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
 ```
 
-Start Airflow with the repository's DAG directory:
+Start Airflow from the same terminal that contains the Snowflake environment variables:
 
 ```bash
 export AIRFLOW_HOME="$PWD/.airflow_home"
@@ -209,48 +241,53 @@ export AIRFLOW__CORE__LOAD_EXAMPLES=False
 airflow standalone
 ```
 
-Open `http://localhost:8080`. The generated local credentials can be inspected with:
+Open `http://localhost:8080`, enable `snowflake_dbt_pipeline`, and select **Trigger**. Local credentials are available with:
 
 ```bash
 cat "$AIRFLOW_HOME/simple_auth_manager_passwords.json.generated"
 ```
 
-Find `snowflake_dbt_pipeline`, enable it, and select **Trigger**. Keep the Airflow terminal running while the web interface is in use.
-
 ## Design Decisions
 
-- **Views for staging:** preserve lightweight, inspectable source-standardization logic without duplicating data.
-- **Table for the mart:** materializes the reusable order/customer join for predictable downstream reads.
-- **Tests as code:** quality rules are versioned with the models and fail the orchestration visibly.
-- **Separate Python environments:** dbt and Airflow retain independent dependency sets while the DAG points to the dbt executable explicitly.
-- **Least-privilege Snowflake role:** transformation access is separated from account administration.
-- **Runtime isolation:** `.venv`, `.airflow_home`, logs, compiled dbt artifacts, and credentials remain outside Git.
+- **Bulk load instead of row inserts:** `PUT` plus `COPY INTO` uses Snowflake's native ingestion path and scales better than issuing one insert per record.
+- **Idempotent local runs:** raw tables and the internal stage are cleared before reload, so repeated portfolio runs produce a known state.
+- **Views for staging:** source standardization stays lightweight and inspectable.
+- **Tables for marts:** reusable joins are materialized for predictable downstream reads.
+- **Tests as code:** quality rules are versioned with models and fail visibly in orchestration.
+- **Separate Airflow environment:** orchestration dependencies remain isolated while the DAG invokes the project-level dbt and Python executables explicitly.
+- **Least-privilege role:** ingestion and transformation use `DBT_ROLE`, not `ACCOUNTADMIN`.
+- **Intentional Git hygiene:** secrets, runtime state, generated data, and compiled artifacts never enter source control.
 
-## What This Project Demonstrates
+## What This Demonstrates
 
-- Warehouse-first ELT using Snowflake compute and storage
-- Modular SQL transformations and explicit lineage with dbt
+- Python-based batch ingestion into Snowflake
+- Warehouse-first ELT with native staging and bulk copy
+- Modular SQL transformations and explicit dbt lineage
 - Automated uniqueness, completeness, and relationship testing
-- Dependency-aware workflow orchestration and observability with Airflow
-- Reproducible local environments and intentional Git hygiene
-- Debugging across CLI paths, Python environments, warehouse permissions, and task logs
+- Dependency-aware Airflow orchestration with task-level observability
+- Reproducible local environments and disciplined Git workflows
+- Debugging across paths, Python environments, authentication, Snowflake permissions, and task logs
 
 ## Production Improvements
 
-This repository is a working local portfolio implementation, not a production deployment. The next production-oriented steps would be:
+This is a working local portfolio implementation. A production evolution would:
 
-- Add an ingestion task for an external operational source instead of relying on built-in Snowflake sample data.
-- Add dbt source freshness checks and Airflow alerts.
-- Run dbt build and SQL linting in GitHub Actions on pull requests.
-- Replace password authentication with key-pair authentication and a managed secrets backend.
-- Package Airflow in Docker or deploy it to a managed orchestration platform.
-- Add separate development, CI, and production dbt targets.
-- Publish dbt documentation and expose the mart to a BI layer.
+- Land immutable source files in object storage and track ingestion metadata
+- Replace truncate-and-reload with incremental or merge-based processing
+- Add source freshness checks, retries, alerting, and dead-letter handling
+- Use key-pair authentication and a managed secrets backend
+- Run dbt build, Python tests, and SQL linting in CI
+- Deploy Airflow to containers or a managed orchestration platform
+- Separate development, CI, and production dbt targets
+- Publish dbt documentation and expose marts through a BI layer
 
 ## Visual Assets
 
-The diagrams are versioned as editable Excalidraw files and scalable SVGs. See the [`docs/diagrams` index](docs/diagrams/README.md) for all source and preview links.
+The diagrams are versioned as editable Excalidraw files, scalable SVGs, and GitHub-ready PNGs. See the [`docs/diagrams` index](docs/diagrams/README.md).
 
-## Dataset
+## Datasets
 
-The project uses Snowflake's shared `SNOWFLAKE_SAMPLE_DATA.TPCH_SF1` dataset. The source data remains in Snowflake and is not copied into this repository.
+- **Jaffle generator:** synthetic local customer and order CSVs used to exercise the full ingestion path.
+- **Snowflake TPC-H SF1:** shared warehouse data used to demonstrate higher-volume dbt transformation.
+
+Generated CSVs and Snowflake source data are intentionally not committed to this repository.

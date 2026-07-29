@@ -1,8 +1,8 @@
 # Diagram Index
 
-All diagrams were generated locally from the implemented dbt models, tests, Snowflake objects, and Airflow DAG. The `.excalidraw` files are editable sources; SVG files are scalable local renders; PNG files are optimized for GitHub display.
+These diagrams describe the verified version 3 pipeline: Python ingestion, Snowflake RAW tables, both dbt source domains, six models, 28 tests, and the four-task Airflow DAG. The `.excalidraw` files are editable sources; SVG files are scalable renders; PNG files are optimized for GitHub display.
 
-## Combined Canvas
+## System Overview
 
 - [Editable Excalidraw](pipeline-visuals.excalidraw)
 - [Scalable SVG](pipeline-visuals.svg)
@@ -19,5 +19,9 @@ All diagrams were generated locally from the implemented dbt models, tests, Snow
 - [Editable Excalidraw](dbt-model-lineage.excalidraw)
 - [Scalable SVG](dbt-model-lineage.svg)
 - [PNG preview](../images/dbt-model-lineage.png)
+
+## Airflow Evidence
+
+- [Successful version 3 run](../images/airflow-ingestion-success.jpg)
 
 No external share URL is included because the project diagrams were rendered locally and were not uploaded to a third-party service.
