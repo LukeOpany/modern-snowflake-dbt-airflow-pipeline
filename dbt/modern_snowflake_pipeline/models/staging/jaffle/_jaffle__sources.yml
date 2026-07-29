@@ -1,0 +1,52 @@
+version: 2
+
+sources:
+  - name: jaffle
+    description: Jaffle Shop CSV data loaded into Snowflake by the Python ingestor.
+    database: ANALYTICS
+    schema: RAW
+    tables:
+      - name: customers
+        identifier: RAW_CUSTOMERS
+        description: One row per Jaffle Shop customer.
+
+      - name: orders
+        identifier: RAW_ORDERS
+        description: One row per Jaffle Shop order.
+
+models:
+  - name: stg_jaffle__customers
+    description: Standardized Jaffle Shop customer records.
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_name
+        data_tests:
+          - not_null
+
+  - name: stg_jaffle__orders
+    description: Standardized Jaffle Shop orders with monetary values converted from cents.
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_jaffle__customers')
+                field: customer_id
+
+      - name: ordered_at
+        data_tests:
+          - not_null
+
+      - name: order_total_amount
+        data_tests:
+          - not_null
